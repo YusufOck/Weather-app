@@ -14,7 +14,7 @@
     x:Name="parentPage"
     ios:Page.UseSafeArea="true"
     x:DataType="viewmodels:HomeViewModel"
-    BackgroundColor="{StaticResource col_fourt}"
+    BackgroundColor="{StaticResource col_sevent}"
     Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
@@ -24,31 +24,26 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <!--#region Grid Parent-->
         <Grid
             x:Name="gridParent"
             Style="{StaticResource vsm_orientation_gridParent}">
 
-            <!--#region Top layer lower 1-->
             <Border
                 x:Name="topLayerLower1"
                 sk:Skeleton.Hide="True"
                 sk:Skeleton.IsBusy="{Binding IsAnimationSkeleton}"
-                BackgroundColor="{StaticResource col_thirt}"
+                BackgroundColor="{StaticResource col_eight}"
                 StrokeShape="{RoundRectangle CornerRadius='0,0,43,43'}"
                 StrokeThickness="0"
                 Style="{StaticResource vsm_orientation_topLayerLower1}">
                 <Border.Shadow>
                     <Shadow
-                        Brush="{StaticResource col_thirt}"
+                        Brush="{StaticResource col_ninth}"
                         Opacity="0.93"
                         Radius="45"
                         Offset="20,20" />
                 </Border.Shadow>
             </Border>
-            <!--#endregion-->
-
-            <!--#region Top layer higher 2-->
             <Border
                 x:Name="topLayerHigher2"
                 sk:Skeleton.Animation="{sk:DefaultAnimation Source=Fade,
@@ -61,8 +56,8 @@
                 Style="{StaticResource vsm_orientation_topLayerHigher2}">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop Offset="0" Color="{StaticResource col_prim}" />
-                        <GradientStop Offset="0.5" Color="{StaticResource col_sec}" />
+                        <GradientStop Offset="0" Color="{StaticResource col_eight}" />
+                        <GradientStop Offset="0.5" Color="{StaticResource col_seven}" />
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -73,7 +68,6 @@
                     sk:Skeleton.IsParent="True"
                     Style="{StaticResource vsm_orientation_gridAdminTopLayerHigher2}">
 
-                    <!--#region Top icons-->
                     <Border
                         Grid.Row="0"
                         Grid.Column="0"
@@ -107,7 +101,7 @@
                             Source="{OnIdiom Phone={StaticResource icon_location_solid_phone},
                                              Tablet={StaticResource icon_location_solid_tablet}}"
                             WidthRequest="{OnIdiom Tablet=25,
-                                                   Phone=18}" />
+                                                  Phone=18}" />
 
                         <Label
                             Style="{OnIdiom Phone={StaticResource TxtHeadline5_1},
@@ -132,9 +126,6 @@
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="24" />
                     </Border>
-                    <!--#endregion-->
-
-                    <!--#region Updating-->
                     <Border
                         x:Name="updating"
                         Margin="0,-2,0,0"
@@ -163,7 +154,7 @@
                                 HeightRequest="{OnIdiom Phone=6,
                                                         Tablet=12}"
                                 WidthRequest="{OnIdiom Phone=6,
-                                                       Tablet=12}" />
+                                                      Tablet=12}" />
 
                             <Label
                                 Style="{OnIdiom Phone={StaticResource TxtCaption_1},
@@ -172,18 +163,12 @@
                                 VerticalTextAlignment="Center" />
                         </StackLayout>
                     </Border>
-                    <!--#endregion-->
-
-                    <!--#region Image-->
                     <ffImageLoading:CachedImage
                         Grid.Row="3"
                         Grid.Column="1"
                         sk:Skeleton.Hide="True"
                         sk:Skeleton.IsBusy="{Binding IsAnimationSkeleton}"
                         Source="{Binding MyHourly.Weather[0].Icon, Converter={StaticResource CustomImageUrlScalingConverter}, ConverterParameter=10}" />
-                    <!--#endregion-->
-
-                    <!--#region Basic description of the climate-->
                     <StackLayout
                         x:Name="lookTemperature"
                         sk:Skeleton.Hide="True"
@@ -218,16 +203,10 @@
                                             Tablet={StaticResource TxtTitle1_1}}"
                             Text="{Binding Days[0].Dt, Converter={StaticResource UnixTimeToDateTimeConverter}, ConverterParameter='dddd, dd MMM'}" />
                     </StackLayout>
-                    <!--#endregion-->
-
-                    <!--#region Dividing line-->
                     <BoxView
                         x:Name="dividingLine"
                         BackgroundColor="{StaticResource co_elev}"
                         Style="{StaticResource vsm_orientation_dividingLine}" />
-                    <!--#endregion-->
-
-                    <!--#region Complex description of the climate-->
                     <Grid
                         x:Name="gridComplexDescriptionClimate"
                         Padding="4,0,4,12"
@@ -303,12 +282,8 @@
                                 Text="Chance of rain" />
                         </StackLayout>
                     </Grid>
-                    <!--#endregion-->
-                </Grid>
+                    </Grid>
             </Border>
-            <!--#endregion-->
-
-            <!--#region Today and 7 days titles-->
             <StackLayout
                 x:Name="stackTodayAnd7Days"
                 Orientation="Horizontal"
@@ -344,9 +319,6 @@
                         WidthRequest="12" />
                 </StackLayout>
             </StackLayout>
-            <!--#endregion-->
-
-            <!--#region [Item Collections] forecast 24 hours a day-->
             <ScrollView
                 x:Name="scrollForecast24Hours"
                 Padding="16,0"
@@ -370,7 +342,7 @@
                                                                             Parameter='0.3'}"
                                 sk:Skeleton.BackgroundColor="{StaticResource col_sec}"
                                 sk:Skeleton.IsBusy="{Binding IsAnimationSkeleton}"
-                                Style="{StaticResource vsm_surfaceHourly}">
+                                BackgroundColor="{StaticResource col_eight}" Style="{StaticResource vsm_surfaceHourly}">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding BindingContext.SelectedHourlyCommand, Source={x:Reference parentPage}}"
@@ -379,25 +351,18 @@
                                 </Border.GestureRecognizers>
                                 <StackLayout Spacing="2">
 
-                                    <!--#region Temperature in degrees celsius-->
                                     <Label
                                         x:Name="labelTemperature"
                                         sk:Skeleton.IsBusy="{Binding IsAnimationSkeleton}"
                                         HorizontalTextAlignment="Center"
                                         Style="{StaticResource vsm_labelTemperature}"
                                         Text="{Binding Temp, StringFormat='{0}°', Converter={StaticResource DoubleToIntConverter}}" />
-                                    <!--#endregion-->
-
-                                    <!--#region Small weather icon-->
                                     <ffImageLoading:CachedImage
                                         x:Name="imageSmallWeather"
                                         sk:Skeleton.Hide="True"
                                         sk:Skeleton.IsBusy="{Binding IsAnimationSkeleton}"
                                         Source="{Binding Weather[0].Icon, Converter={StaticResource CustomImageUrlScalingConverter}, ConverterParameter=2}"
                                         Style="{StaticResource vsm_imageSmallWeather}" />
-                                    <!--#endregion-->
-
-                                    <!--#region Time per hour-->
                                     <Label
                                         x:Name="labelHour"
                                         sk:Skeleton.IsBusy="{Binding IsAnimationSkeleton}"
@@ -405,16 +370,12 @@
                                         Style="{StaticResource vsm_labelHour}"
                                         Text="{Binding Dt, Converter={StaticResource UnixTimeToDateTimeConverter}, ConverterParameter=HH:mm}"
                                         VerticalOptions="EndAndExpand" />
-                                    <!--#endregion-->
-                                </StackLayout>
+                                    </StackLayout>
                             </Border>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </mct:UniformItemsLayout>
             </ScrollView>
-            <!--#endregion-->
-
-            <!--#region Loading-->
             <Border
                 x:Name="borderLoading"
                 HorizontalOptions="FillAndExpand"
@@ -425,8 +386,8 @@
                 VerticalOptions="FillAndExpand">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0,1">
-                        <GradientStop Offset="0" Color="{StaticResource col_prim}" />
-                        <GradientStop Offset="0.5" Color="{StaticResource col_sec}" />
+                        <GradientStop Offset="0" Color="{StaticResource col_eight}" />
+                        <GradientStop Offset="0.5" Color="{StaticResource col_seven}" />
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -448,8 +409,6 @@
                         TextColor="White" />
                 </VerticalStackLayout>
             </Border>
-            <!--#endregion-->
-        </Grid>
-        <!--#endregion-->
-    </ContentPage.Content>
+            </Grid>
+        </ContentPage.Content>
 </ContentPage>
