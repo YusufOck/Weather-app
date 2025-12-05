@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mitawi.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModel="clr-namespace:Mitawi.ViewModels"
+    x:DataType="viewModel:WelcomeViewModel"
+    Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="50, Auto, Auto, *, Auto, Auto, 34, Auto, 50">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Offset="0" Color="{StaticResource col_prim}" />
+                <GradientStop Offset="0.5" Color="{StaticResource col_sec}" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Label
+            x:Name="lblPhrase1"
+            Grid.Row="1"
+            FontFamily="Roboto#500"
+            FontSize="28"
+            HorizontalTextAlignment="Center"
+            IsVisible="False"
+            Text="Discover The"
+            TextColor="White" />
+
+        <Label
+            x:Name="lblPhrase2"
+            Grid.Row="2"
+            FontFamily="Roboto#500"
+            FontSize="28"
+            HorizontalTextAlignment="Center"
+            IsVisible="False"
+            Text="Weather In Your City"
+            TextColor="White" />
+
+        <Image
+            x:Name="imgWeather"
+            Grid.Row="3"
+            Margin="20,0"
+            IsVisible="False"
+            Source="weather.png" />
+
+        <Label
+            x:Name="lblPhrase3"
+            Grid.Row="4"
+            FontFamily="Roboto#400"
+            FontSize="16"
+            HorizontalTextAlignment="Center"
+            IsVisible="False"
+            Text="Get to know your weather maps and"
+            TextColor="White" />
+
+        <Label
+            x:Name="lblPhrase4"
+            Grid.Row="5"
+            FontFamily="Roboto#400"
+            FontSize="16"
+            HorizontalTextAlignment="Center"
+            IsVisible="False"
+            Text="radar precipitation forcast"
+            TextColor="White" />
+
+        <Button
+            x:Name="btnGetStarted"
+            Grid.Row="7"
+            BackgroundColor="White"
+            Command="{Binding NextPageCommand}"
+            CornerRadius="16"
+            FontFamily="Roboto#700"
+            FontSize="18"
+            HeightRequest="50"
+            IsEnabled="False"
+            IsVisible="False"
+            Text="GET STARTED"
+            TextColor="{StaticResource col_sec}"
+            WidthRequest="255" />
+    </Grid>
+</ContentPage>
